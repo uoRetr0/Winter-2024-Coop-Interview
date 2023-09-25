@@ -1,0 +1,121 @@
+$primary-color: #007bff;       // primary color (blue)
+$good-color: #28a745;       // good color (green)
+$wrong-color: #dc3545;        // wrong color (red)
+
+/* main container */
+.container {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #112861 !important;
+  height: 100vh; /*make the container take up the full view */
+}
+
+/* card styles */
+.card {
+  margin-top: 20px;
+  border: none;
+  background-color: #1D42A1;
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 24px; /* note to self, use % next time intead of pixels */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.top-right-level {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.top-right-streak {
+  position: absolute;
+  top: 5px;
+  right: 150px;
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center the answer options horizontally */
+  align-items: center; /* center the answer options vertically */
+}
+
+/* styles for answer options */
+.answer-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.answer-option:hover {
+  background-color: #0220A1; /* background on hover */
+}
+
+.answer-option.selected {
+  background-color: #0220A1 !important; /* blue background for selected answer */
+  color: #fff;
+}
+
+/* expose correct answer */
+.answer-option.correct,
+.answer-option.correct-submitted {
+  background-color: $good-color !important;
+  color: #fff;
+}
+
+/* hide radio buttons */
+.answer-option input[type="radio"] {
+  display: none;
+}
+
+/* button styles */
+.btn-primary,
+.btn-good,
+.btn-wrong {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* theme colors to buttons word */
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: #fff;
+}
+
+.btn-good {
+  background-color: $good-color;
+  border-color: $good-color;
+  color: #fff;
+}
+
+.btn-wrong {
+  background-color: $wrong-color;
+  border-color: $wrong-color;
+  color: #fff;
+}
+
+/* good message style */
+.good-message {
+  font-size: 24px;
+  color: #28a745;
+  text-align: center;
+}
+
+/* wrong message style */
+.wrong-message {
+  font-size: 24px;
+  color: #dc3545;
+  text-align: center;
+}

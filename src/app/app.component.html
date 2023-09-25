@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div>
+    <!-- level -->
+    <h3 class="top-right-level">{{ 'Level: ' + difficulty }}</h3>
+    <!-- streak -->
+    <h3 class="top-right-streak">{{ 'Streak: ' + streak }}</h3>
+  </div>
+
+  <div>
+    <h3 class="card-title" [innerHTML]="question.question"></h3>
+    
+    <!-- good message -->
+    <div *ngIf="showGoodMessage" class="good-message">
+      {{ goodMessage }}
+    </div>
+
+    <!-- wrong message -->
+    <div *ngIf="showWrongMessage" class="wrong-message">
+      {{ wrongMessage }}
+    </div>
+
+    <!-- error message -->
+    <div *ngIf="showErrorMessage" class="wrong-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <!-- question card -->
+  <div *ngIf="question" class="card mt-4">
+    <div class="card-body">
+      <div class="mt-3 answer-options">
+        <!-- loop through the answers -->
+        <label
+          class="d-block answer-option"
+          *ngFor="let answer of answers"
+          [ngClass]="{
+            'selected': selectedAnswer === answer,
+            'correct': correctAnswer === answer,
+            'correct-submitted': correctAnswer === answer && showWrongMessage
+          }"
+        >
+          <input type="radio" name="answer" [value]="answer" (change)="selectedAnswer = answer">
+          <span [innerHTML]="answer"></span>
+        </label>
+      </div>
+
+      <!-- submit button -->
+      <div *ngIf="showSubmit">
+        <button type="button" class="btn btn-primary mt-3" (click)="checkAnswer(selectedAnswer)">Submit</button>
+      </div>
+      
+      <!-- good button -->
+      <div *ngIf="showGoodMessage" class="good-message">
+        <button type="button" class="btn btn-good mt-3" (click)="nextQuestion()">Next</button>
+      </div>
+      
+      <!-- wrong button -->
+      <div *ngIf="showWrongMessage" class="wrong-message">
+        <button type="button" class="btn btn-wrong mt-3" (click)="nextQuestion()">Restart</button>
+      </div>
+    </div>
+  </div>
+</div>
